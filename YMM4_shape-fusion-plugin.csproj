@@ -1,0 +1,73 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net10.0-windows10.0.19041.0</TargetFramework>
+		<UseWPF>true</UseWPF>
+		<RootNamespace>YMM4_shape_fusion_plugin</RootNamespace>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<AssemblyName>shape-fusion-plugin</AssemblyName>
+		<LangVersion>latest</LangVersion>
+		<YMM4DirPath>W:\yt_job\main_program\YMM4_Lite\</YMM4DirPath>
+		<Version>0.1.0</Version>
+		<Authors>kikaisya-tdd</Authors>
+		<Product>図形融合プラグイン</Product>
+		<Description>図形を融合できるようにする目的のプラグイン｡現在は円形のみ｡</Description>
+		<NeutralLanguage>ja-JP</NeutralLanguage>
+	</PropertyGroup>
+	<ItemGroup>
+		<Reference Include="YukkuriMovieMaker.Controls">
+			<HintPath>$(YMM4DirPath)YukkuriMovieMaker.Controls.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="YukkuriMovieMaker.Plugin">
+			<HintPath>$(YMM4DirPath)YukkuriMovieMaker.Plugin.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="SharpGen.Runtime">
+			<HintPath>$(YMM4DirPath)SharpGen.Runtime.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="SharpGen.Runtime.COM">
+			<HintPath>$(YMM4DirPath)SharpGen.Runtime.COM.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="Vortice.Direct2D1">
+			<HintPath>$(YMM4DirPath)Vortice.Direct2D1.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="Vortice.DirectX">
+			<HintPath>$(YMM4DirPath)Vortice.DirectX.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="Vortice.Mathematics">
+			<HintPath>$(YMM4DirPath)Vortice.Mathematics.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+	</ItemGroup>
+	<!--以下あおもやさんのEM-FilterSetsのcsprojより一部拝借-->
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent" Condition="'$(SkipPluginCopy)' != 'true'">
+		<MakeDir Directories="$(YMM4DirPath)user\plugin\$(AssemblyName)" />
+		<Copy SourceFiles="$(TargetPath)"
+			  DestinationFolder="$(YMM4DirPath)user\plugin\$(AssemblyName)"
+			  SkipUnchangedFiles="true" />
+		<Message Text="✓ Copied $(AssemblyName).dll to $(YMM4DirPath)user\plugin\$(AssemblyName)" Importance="high" />
+	</Target>
+
+	<Target Name="MakeYmme" AfterTargets="PostBuildEvent" Condition="'$(PackYmme)' == 'true'">
+		<PropertyGroup>
+			<YmmeStageRoot>$(OutputPath)ymme</YmmeStageRoot>
+			<YmmeStage>$(YmmeStageRoot)\$(AssemblyName)</YmmeStage>
+			<YmmeOut>$(MSBuildProjectDirectory)\publish\$(AssemblyName).v.$(Version).ymme</YmmeOut>
+		</PropertyGroup>
+		<RemoveDir Directories="$(YmmeStageRoot)" />
+		<MakeDir Directories="$(YmmeStage)" />
+		<Copy SourceFiles="$(TargetPath)" DestinationFolder="$(YmmeStage)" />
+		<Copy SourceFiles="README.md" DestinationFolder="$(YmmeStage)" Condition="Exists('README.md')" />
+		<Copy SourceFiles="LICENSE" DestinationFolder="$(YmmeStage)" Condition="Exists('LICENSE')" />
+		<MakeDir Directories="$(MSBuildProjectDirectory)\publish" />
+		<Delete Files="$(YmmeOut)" />
+		<ZipDirectory SourceDirectory="$(YmmeStageRoot)" DestinationFile="$(YmmeOut)" Overwrite="true" />
+		<Message Text="✓ ymme package created: $(YmmeOut)" Importance="high" />
+	</Target>
+</Project>
