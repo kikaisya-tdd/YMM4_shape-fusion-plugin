@@ -11,8 +11,8 @@
 		<YMM4DirPath>W:\yt_job\main_program\YMM4_Lite\</YMM4DirPath>
 		<Version>0.1.0</Version>
 		<Authors>kikaisya-tdd</Authors>
-		<Product>図形融合プラグイン</Product>
-		<Description>図形を融合できるようにする目的のプラグイン｡現在は円形のみ｡</Description>
+		<Product>図形融合したいプラグイン</Product>
+		<Description>図形を融合できるようにしたいプラグイン｡現在は円形のみ｡</Description>
 		<NeutralLanguage>ja-JP</NeutralLanguage>
 	</PropertyGroup>
 	<ItemGroup>
