@@ -45,29 +45,8 @@
 			<Private>false</Private>
 		</Reference>
 	</ItemGroup>
-	<!--以下あおもやさんのEM-FilterSetsのcsprojより一部拝借-->
-	<Target Name="PostBuild" AfterTargets="PostBuildEvent" Condition="'$(SkipPluginCopy)' != 'true'">
+	<Target Name="PostBuild" AfterTargets="Build" Condition="'$(SkipPluginCopy)' != 'true'">
 		<MakeDir Directories="$(YMM4DirPath)user\plugin\$(AssemblyName)" />
-		<Copy SourceFiles="$(TargetPath)"
-			  DestinationFolder="$(YMM4DirPath)user\plugin\$(AssemblyName)"
-			  SkipUnchangedFiles="true" />
-		<Message Text="✓ Copied $(AssemblyName).dll to $(YMM4DirPath)user\plugin\$(AssemblyName)" Importance="high" />
-	</Target>
-
-	<Target Name="MakeYmme" AfterTargets="PostBuildEvent" Condition="'$(PackYmme)' == 'true'">
-		<PropertyGroup>
-			<YmmeStageRoot>$(OutputPath)ymme</YmmeStageRoot>
-			<YmmeStage>$(YmmeStageRoot)\$(AssemblyName)</YmmeStage>
-			<YmmeOut>$(MSBuildProjectDirectory)\publish\$(AssemblyName).v.$(Version).ymme</YmmeOut>
-		</PropertyGroup>
-		<RemoveDir Directories="$(YmmeStageRoot)" />
-		<MakeDir Directories="$(YmmeStage)" />
-		<Copy SourceFiles="$(TargetPath)" DestinationFolder="$(YmmeStage)" />
-		<Copy SourceFiles="README.md" DestinationFolder="$(YmmeStage)" Condition="Exists('README.md')" />
-		<Copy SourceFiles="LICENSE" DestinationFolder="$(YmmeStage)" Condition="Exists('LICENSE')" />
-		<MakeDir Directories="$(MSBuildProjectDirectory)\publish" />
-		<Delete Files="$(YmmeOut)" />
-		<ZipDirectory SourceDirectory="$(YmmeStageRoot)" DestinationFile="$(YmmeOut)" Overwrite="true" />
-		<Message Text="✓ ymme package created: $(YmmeOut)" Importance="high" />
+		<Copy SourceFiles="$(TargetPath)" DestinationFolder="$(YMM4DirPath)user\plugin\$(AssemblyName)" SkipUnchangedFiles="true" />
 	</Target>
 </Project>
