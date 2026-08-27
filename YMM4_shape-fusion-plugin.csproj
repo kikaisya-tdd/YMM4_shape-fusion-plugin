@@ -45,6 +45,9 @@
 			<Private>false</Private>
 		</Reference>
 	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="DynamicFusion\" />
+	</ItemGroup>
 	<Target Name="PostBuild" AfterTargets="Build" Condition="'$(SkipPluginCopy)' != 'true'">
 		<MakeDir Directories="$(YMM4DirPath)user\plugin\$(AssemblyName)" />
 		<Copy SourceFiles="$(TargetPath)" DestinationFolder="$(YMM4DirPath)user\plugin\$(AssemblyName)" SkipUnchangedFiles="true" />
