@@ -26,9 +26,9 @@
 ## インストール:
 1. [Releases](https://github.com/kikaisya-tdd/YMM4_shape-fusion-plugin/releases)から`shape-fusion-plugin.x.x.x.ymme`をダウンロード
 2. ファイルをYMM4のウィンドウにドラッグ&ドロップ 又は ダウンロードされた.ymmeファイルをダブルクリック
-3. YMM4を再起動  
-又は  
-1. YMM4のプラグインポータルツールから追加
+3. YMM4を再起動\
+又は\
+YMM4のプラグインポータルツールから追加
 
 ## ライセンス:
 MIT License(LICENSE.txt参照)
