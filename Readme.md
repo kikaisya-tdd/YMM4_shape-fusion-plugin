@@ -24,10 +24,10 @@
 - Windows11 Home(64bit)､ゆっくりMovieMaker4 : v4.56.1.0にて動作確認をしています｡
 
 ## インストール:
-1. [Releases](https://github.com/kikaisya-tdd/YMM4_shape-fusion-plugin/releases)から`shape-fusion-plugin.ymme`をダウンロード
+1. [Releases](https://github.com/kikaisya-tdd/YMM4_shape-fusion-plugin/releases)から`shape-fusion-plugin.x.x.x.ymme`をダウンロード
 2. ファイルをYMM4のウィンドウにドラッグ&ドロップ 又は ダウンロードされた.ymmeファイルをダブルクリック
-3. YMM4を再起動
-又は
+3. YMM4を再起動  
+又は  
 YMM4のプラグインポータルツールから追加
 
 ## ライセンス:
