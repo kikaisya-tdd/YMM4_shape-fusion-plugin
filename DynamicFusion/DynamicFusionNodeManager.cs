@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Numerics;
 
-namespace YMM4_shape_fusion_plugin.DynamicFusion
+namespace SFP.DynamicFusion
 {
 	/// <summary>
 	/// 「動的融合:対象」エフェクトが自分の位置・半径を書き込み、

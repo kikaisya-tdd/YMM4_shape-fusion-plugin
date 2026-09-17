@@ -7,7 +7,7 @@ using YukkuriMovieMaker.Player.Video;
 using YukkuriMovieMaker.Plugin.Shape;
 using YukkuriMovieMaker.Project;
 
-namespace YMM4_shape_fusion_plugin.CircleFusion
+namespace SFP.CircleFusion
 {
 	/// <summary>
 	/// 円1・円2の位置/半径と、接続割合(y)を保持するパラメータークラス。

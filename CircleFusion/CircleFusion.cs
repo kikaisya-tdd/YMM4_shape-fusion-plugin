@@ -2,9 +2,7 @@ using YukkuriMovieMaker.Plugin;
 using YukkuriMovieMaker.Plugin.Shape;
 using YukkuriMovieMaker.Project;
 
-namespace YMM4_shape_fusion_plugin.CircleFusion;
-[PluginDetails(AuthorName = "きかい社TDD/燥濔卉咲", ContentId = "" )]
-
+namespace SFP.CircleFusion;
 public class ShapeFusionPlugin : IShapePlugin
 {
 	public string Name => "図形融合プラグイン:円";

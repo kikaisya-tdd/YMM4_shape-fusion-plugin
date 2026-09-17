@@ -8,22 +8,25 @@ using YukkuriMovieMaker.Commons;
 using YukkuriMovieMaker.Controls;
 using YukkuriMovieMaker.Exo;
 using YukkuriMovieMaker.Player.Video;
+using YukkuriMovieMaker.Plugin;
 using YukkuriMovieMaker.Plugin.Effects;
 using YukkuriMovieMaker.UndoRedo;
 
-namespace YMM4_shape_fusion_plugin.DynamicFusion
+namespace SFP.DynamicFusion
+
 {
-	/// <summary>
-	/// 動的融合の「対象」エフェクト。
-	/// このエフェクトをかけたアイテムの位置・半径をDynamicFusionNodeManagerに登録するだけで、
-	/// 見た目(入力画像)自体は一切変更せずそのまま通す。
-	///
-	/// 既知の制約(TODO):
-	///  - v1はカメラ・回転・3D配置を考慮しない。アイテムのDraw.X/Yをそのまま2D座標として使う
-	///  - 半径はアイテムの拡大率(Zoom)と連動しない。見た目のサイズを変えたら半径も手動で合わせる必要あり
-	///  - InterItemNode由来の設計のため、制御側のOutputが呼ばれるタイミング次第で1フレーム遅れることがある
-	/// </summary>
-	[VideoEffect("動的融合:対象", ["描画"], ["fusion", "node", "融合", "対象"])]
+    /// <summary>
+    /// 動的融合の「対象」エフェクト。
+    /// このエフェクトをかけたアイテムの位置・半径をDynamicFusionNodeManagerに登録するだけで、
+    /// 見た目(入力画像)自体は一切変更せずそのまま通す。
+    ///
+    /// 既知の制約(TODO):
+    ///  - v1はカメラ・回転・3D配置を考慮しない。アイテムのDraw.X/Yをそのまま2D座標として使う
+    ///  - 半径はアイテムの拡大率(Zoom)と連動しない。見た目のサイズを変えたら半径も手動で合わせる必要あり
+    ///  - InterItemNode由来の設計のため、制御側のOutputが呼ばれるタイミング次第で1フレーム遅れることがある
+    /// </summary>
+    [PluginDetails(AuthorName = "きかい社TDD", ContentId = "")]
+    [VideoEffect("動的融合:対象", ["融合したい"], ["fusion", "node", "融合", "対象"],IsAviUtlSupported = false)]
 	public class DynamicFusionNodeEffect : VideoEffectBase
 	{
 		public override string Label => "動的融合:対象";

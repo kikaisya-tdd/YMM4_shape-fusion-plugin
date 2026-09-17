@@ -1,3 +1,6 @@
 <Solution>
+  <Folder Name="/ソリューション項目/">
+    <File Path="sfp.cs" />
+  </Folder>
   <Project Path="YMM4_shape-fusion-plugin.csproj" />
 </Solution>

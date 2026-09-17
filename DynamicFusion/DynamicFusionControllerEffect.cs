@@ -8,21 +8,23 @@ using YukkuriMovieMaker.Commons;
 using YukkuriMovieMaker.Controls;
 using YukkuriMovieMaker.Exo;
 using YukkuriMovieMaker.Player.Video;
+using YukkuriMovieMaker.Plugin;
 using YukkuriMovieMaker.Plugin.Effects;
 
-namespace YMM4_shape_fusion_plugin.DynamicFusion
+namespace SFP.DynamicFusion
 {
-	/// <summary>
-	/// 動的融合の「制御」エフェクト。
-	/// 2つの融合IDに登録された円(位置・半径)をDynamicFusionNodeManagerから読み取り、
-	/// 図形融合(ShapeFusion)と同じベジェ接続アルゴリズムで合体形状を描画する。
-	/// サイズ0の専用アイテムなどに付けて使うことを想定。
-	///
-	/// 既知の制約(TODO):
-	///  - 描画順序(Outputが呼ばれるタイミング)に依存するため、1フレーム遅れることがある
-	///  - v1はカメラ・回転を考慮しない2D固定
-	/// </summary>
-	[VideoEffect("動的融合:制御", ["描画"], ["fusion", "controller", "融合", "制御"])]
+    /// <summary>
+    /// 動的融合の「制御」エフェクト。
+    /// 2つの融合IDに登録された円(位置・半径)をDynamicFusionNodeManagerから読み取り、
+    /// 図形融合(ShapeFusion)と同じベジェ接続アルゴリズムで合体形状を描画する。
+    /// サイズ0の専用アイテムなどに付けて使うことを想定。
+    ///
+    /// 既知の制約(TODO):
+    ///  - 描画順序(Outputが呼ばれるタイミング)に依存するため、1フレーム遅れることがある
+    ///  - v1はカメラ・回転を考慮しない2D固定
+    /// </summary>
+    [PluginDetails(AuthorName = "きかい社TDD", ContentId = "")]
+    [VideoEffect("動的融合:制御", ["融合したい"], ["fusion", "controller", "融合", "制御"], IsAviUtlSupported = false)]
 	public class DynamicFusionControllerEffect : VideoEffectBase
 	{
 		public override string Label => "動的融合:制御";

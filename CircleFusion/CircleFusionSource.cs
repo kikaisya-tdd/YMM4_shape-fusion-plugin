@@ -6,7 +6,7 @@ using YukkuriMovieMaker.Commons;
 using YukkuriMovieMaker.Player.Video;
 using YukkuriMovieMaker.Plugin.Shape;
 
-namespace YMM4_shape_fusion_plugin.CircleFusion
+namespace SFP.CircleFusion
 {
 	/// <summary>
 	/// 2つの円を接続割合yに応じてベジェ曲線で滑らかに繋いだ1つのジオメトリとして描画する。
